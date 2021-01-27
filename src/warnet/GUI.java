@@ -420,10 +420,12 @@ jButton10.setEnabled(false);        // TODO add your handling code here:
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         String str = "select * from aktivitas";
+        String stt = "select * from aktivitas";
         String sql="insert into aktivitas values(?,?,?,?,?)";
         LocalTime time = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        
+    int lastLine = 0;
+    
 
     
         try{
@@ -477,10 +479,7 @@ jButton10.setEnabled(false);        // TODO add your handling code here:
             PreparedStatement st = conn.prepareStatement(str);
             str = "SELECT * FROM plg WHERE nama='"+ jTextField2.getText() +"'";
             ResultSet rs = st.executeQuery(str);
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Nama sudah ada!");
-                jTextField2.requestFocus();
-            } else {    
+                
         PreparedStatement stat = conn.prepareStatement(sql);
         stat.setString(1, time.format(formatter));
         
@@ -488,7 +487,7 @@ jButton10.setEnabled(false);        // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Berhasil Simpan");
         datatable1();
         datatable();
-}}catch (SQLException e) {
+}catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan"+e);
             }     // TODO add your handling code here:
     }//GEN-LAST:event_jButton7MouseClicked
