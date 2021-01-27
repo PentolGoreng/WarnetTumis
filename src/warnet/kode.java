@@ -18,7 +18,7 @@ public class kode {
     int kode;
     public kode(){
        
-        String str = "select count(*) from plg";
+        String str = "select * from plg where no=(select max(no))";
         try{
         PreparedStatement st = conn.prepareStatement(str);
             
