@@ -14,8 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import warnet.koneksi;
 import com.mysql.cj.xdevapi.Statement;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
 /**
  *
@@ -32,9 +35,11 @@ private Connection conn = new koneksi().connect();
     try{
         java.sql.Statement stat=conn.createStatement();
         ResultSet hasil=stat.executeQuery(sql);
+        
         while(hasil.next()){
             String no=hasil.getString("no");
             String nama=hasil.getString("nama");
+            
             String[] data={no,nama};
             tabmode.addRow(data);
     }
@@ -301,6 +306,7 @@ private Connection conn = new koneksi().connect();
         jTextField2.setEnabled(false);
         jButton10.setEnabled(false);
         
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
@@ -545,4 +551,8 @@ jButton10.setEnabled(false);        // TODO add your handling code here:
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private Object Number(String nama) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
